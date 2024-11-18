@@ -1,0 +1,212 @@
+<nav class="navbar">
+  <div class="brand-title" routerLink="">
+    <i class="fas fa-feather-alt mr-2"></i> Maktoub
+  </div>
+  <div class="search-container">
+    <div class="search-wrapper">
+      <i class="fas fa-search search-icon"></i>
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (keyup)="onSearch()" 
+        placeholder="Search articles..." 
+        class="search-input"
+      >
+    </div>
+    <div class="search-dropdown" *ngIf="searchResults.length > 0">
+      <div *ngFor="let article of searchResults" (click)="goToArticle(article.id)" class="dropdown-item">
+        <div class="item">
+          <i class="far fa-newspaper mr-2"></i>
+          <div class="item-content">
+            <strong>{{ article.title }}</strong>
+            <p>{{ article.subtitle }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-links">
+    <ul>
+      <li>
+        <a routerLink="/ourstory">
+          <i class="fas fa-book-open mr-2"></i> Our Story
+        </a>
+      </li>
+      <li>
+        <a style="cursor: pointer;" (click)="openMembershipPopup()">
+          <i class="fas fa-crown mr-2"></i> Membership
+        </a>
+      </li>
+      <li>
+        <a routerLink="/create">
+          <i class="fas fa-pen-fancy mr-2"></i> Write
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="action-buttons">
+    <!-- Show these buttons when user is NOT logged in -->
+    <ng-container *ngIf="!isLogged">
+      <a class="custom-button" (click)="openPopup(true)">
+        <i class="fas fa-user-plus mr-2"></i> Get Started
+      </a>
+      <a class="signin-button" (click)="openPopup(false)">
+        <i class="fas fa-sign-in-alt mr-2"></i> Sign In
+      </a>
+    </ng-container>
+    
+    <!-- Show these buttons when user is logged in -->
+    <!-- Replace the logged-in state container in your template with this: -->
+<ng-container *ngIf="isLogged">
+  <div class="user-controls">
+    <!-- Notification Icon -->
+    <div class="notification-container" (click)="toggleNotifications($event)">
+      <i class="fas fa-bell icon-button"></i>
+      <span class="notification-badge">{{ unreadCount }}</span>
+      <!-- Optional: Add notification dropdown here -->
+    </div>
+    
+    <!-- User Profile -->
+    <div class="user-profile" (click)="toggleUserMenu($event)">
+      <div class="user-avatar">
+        <i class="fas fa-user"></i>
+      </div>
+      <span class="username">{{ userName }}</span>
+    </div>
+  </div>
+</ng-container>
+<div 
+  class="dropdown-backdrop" 
+  [class.show]="showNotifications || showUserMenu"
+  (click)="closeAllDropdowns()"
+></div>
+<!-- Optional: Add these dropdowns after your navbar -->
+<div class="notification-dropdown" [class.show]="showNotifications">
+  <div class="notification-header">
+    <span>Notifications</span>
+    <i style="cursor: pointer;" class="fas fa-check-double" (click)="markAllAsRead()" title="Mark all as read"></i>
+  </div>
+  <div class="notification-item" *ngFor="let notification of notifications" (click)="handleNotificationClick(notification)">
+    <i class="fas" [ngClass]="{
+      'fa-heart': notification.type === 0,
+      'fa-comment': notification.type === 1,
+      'fa-at': notification.type === 2,
+      'fa-newspaper': notification.type === 3,
+      'fa-info-circle': notification.type === 4
+    }" [style.color]="notification.isRead ? '#6B7280' : '#D26A5C'"></i>
+    <div class="notification-content">
+      <div class="notification-title" [class.unread]="!notification.isRead">
+        {{ notification.title }}
+      </div>
+      <div class="notification-text">
+        {{ notification.message }}
+      </div>
+      <div class="notification-time">
+        {{ notification.createdAt | date:'short' }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="user-dropdown" [class.show]="showUserMenu">
+  <div class="dropdown-item" routerLink="/user/{{userId}}">
+    <i class="fas fa-user-circle"></i>
+    <span>Profile</span>
+  </div>
+  <div class="dropdown-item" routerLink="/profile">
+    <i class="fas fa-cog"></i>
+    <span>Settings</span>
+  </div>
+  <div class="dropdown-item" (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>Sign Out</span>
+  </div>
+</div>
+  </div>
+</nav>
+
+<!-- Auth Popup - remains unchanged -->
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-content">
+    <span class="close-btn" (click)="closePopup()">
+      <i class="fas fa-times"></i>
+    </span>
+    <div class="popup-header">
+      <i class="fas fa-feather-alt text-3xl mb-4"></i>
+      <h2 *ngIf="isSignUpMode">Join Maktoub Now!</h2>
+      <h2 *ngIf="!isSignUpMode">Sign In to Maktoub</h2>
+    </div>
+    
+    <form (submit)="onSubmit()">
+      <div class="input-group" *ngIf="isSignUpMode">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" [(ngModel)]="name" placeholder="Full Name" name="name" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="email" [(ngModel)]="email" placeholder="Email" name="email" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" [(ngModel)]="password" placeholder="Password" name="password" required />
+      </div>
+      <div class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <button type="submit">
+        <i class="fas" [ngClass]="isSignUpMode ? 'fa-user-plus' : 'fa-sign-in-alt'"></i>
+        {{ isSignUpMode ? 'Sign Up' : 'Sign In' }}
+      </button>
+    </form>
+
+    <hr class="auth-divider">
+    <div class="auth-toggle">
+      <p *ngIf="isSignUpMode">
+        Already have an account? <a href="#" (click)="toggleMode()">Sign In</a>
+      </p>
+      <p *ngIf="!isSignUpMode">
+        Don't have an account? <a href="#" (click)="toggleMode()">Sign Up</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Add this popup after the auth popup -->
+<div class="popup" *ngIf="showMembershipPopup">
+  <div class="popup-content">
+    <span class="close-btn" (click)="closeMembershipPopup()">
+      <i class="fas fa-times"></i>
+    </span>
+    <div class="popup-header">
+      <i class="fas fa-crown text-3xl mb-4"></i>
+      <h2>Maktoub Membership</h2>
+    </div>
+    
+    <div style="text-align: center; padding: 1rem 0;">
+      <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #333;">Coming Soon!</h3>
+      <p style="color: #666; margin-bottom: 1.5rem; line-height: 1.6;">
+        We're working hard to bring you Maktoub Membership - a program designed to reward great writing and support independent voices.
+      </p>
+      <div style="background-color: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+        <h4 style="color: #D26A5C; margin-bottom: 1rem; font-weight: 600;">What to expect:</h4>
+        <ul style="text-align: left; color: #666; list-style: none;">
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+            <i class="fas fa-check-circle mr-2" style="color: #D26A5C;"></i>
+            Fair compensation for writers based on member engagement
+          </li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+            <i class="fas fa-check-circle mr-2" style="color: #D26A5C;"></i>
+            Unlimited access to all stories on Maktoub
+          </li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+            <i class="fas fa-check-circle mr-2" style="color: #D26A5C;"></i>
+            Support quality writing and independent voices
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

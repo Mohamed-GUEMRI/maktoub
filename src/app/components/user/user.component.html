@@ -1,0 +1,47 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="profile-pic-container">
+      <div class="profile-pic">
+        <img [src]="authorProfilePic" [alt]="authorName + '\'s profile picture'" />
+      </div>
+      <div class="profile-pic-overlay"></div>
+    </div>
+    <div class="profile-info">
+      <div class="profile-name-tagline">
+        <h1>{{ authorName }}</h1>
+        <p class="profile-tagline">{{ authorTagline }}</p>
+      </div>
+      <div class="profile-stats-follow">
+        <div class="profile-stats">
+          <span><i class="fas fa-book-open"></i> {{ articleCount }} Articles</span>
+          <span><i class="fas fa-user-friends"></i> {{ followerCount }} Followers</span>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-follow" (click)="toggleFollow()" *ngIf="!isUserAuthor">
+            <i class="fas" [ngClass]="isFollowing ? 'fa-user-check' : 'fa-user-plus'"></i>
+            {{ isFollowing ? 'Following' : 'Follow' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-about">
+    <h2>About {{ authorName }}</h2>
+    <p>{{ authorBio }}</p>
+  </div>
+
+
+  <div class="profile-articles">
+    <h2>Articles</h2>
+    <ul *ngIf="articles.length > 0; else noArticles">
+      <li *ngFor="let article of articles">
+        <a routerLink='/articles/{{article.id}}'>{{ article.title }}</a>
+        <p>{{ article.subtitle }}</p>
+      </li>
+    </ul>
+    <ng-template #noArticles>
+      <p class="no-articles">No articles found for this author.</p>
+    </ng-template>
+  </div>
+</div>

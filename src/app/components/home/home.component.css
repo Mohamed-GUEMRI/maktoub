@@ -1,0 +1,15 @@
+.app-container {
+    display: flex;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    margin-right: 0; /* Space between content and sidebar */
+  }
+
+
+  @media (max-width: 992px){
+    app-side-bar{
+        display: none;
+    }
+  }

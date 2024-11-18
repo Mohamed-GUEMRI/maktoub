@@ -1,0 +1,148 @@
+<div class="profile-container">
+  <div class="profile-grid">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="profile-picture">
+        <div class="profile-picture-preview">
+         <!-- <img [src]="imagePreview || 'assets/default-avatar.png'" alt="Profile Picture"> -->
+         <img src="../../../assets/th.jpg" alt="Author avatar" class="author-avatar">
+        </div>
+        <!-- <label class="profile-picture-upload">
+          <i class="fas fa-camera"></i>
+          <input type="file" (change)="onFileChange($event)" accept="image/*">
+        </label>-->
+      </div>
+
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="form-label" for="name">Full Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            class="form-control" 
+            formControlName="name"
+            placeholder="Enter your full name">
+          <small class="form-error" *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+            Name is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            class="form-control" 
+            formControlName="email"
+            placeholder="Enter your email">
+          <small class="form-error" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+            Please enter a valid email address
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bio">Bio</label>
+          <input 
+            type="text" 
+            id="bio" 
+            class="form-control" 
+            formControlName="bio"
+            placeholder="Enter your bio">
+          <small class="form-error" *ngIf="profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched">
+            Please enter a valid bio 
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bio">About Me</label>
+          <textarea 
+            id="about" 
+            class="form-control" 
+            rows="4" 
+            formControlName="about"
+            placeholder="Tell us about yourself..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full">
+          <i class="fas fa-save"></i>
+          Save Changes
+        </button>
+      </form>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-grid">
+      <!-- Drafts -->
+      <div class="content-card">
+        <div class="content-header">
+          <h2 class="content-title">Draft Articles</h2>
+          <a [routerLink]="['/create']" class="btn btn-secondary">
+            <i class="fas fa-plus"></i>
+            New Draft
+          </a>
+        </div>
+        
+        <ul class="content-list" *ngIf="drafts.length > 0; else noDrafts">
+          <li class="content-item" *ngFor="let draft of drafts">
+            <a [routerLink]="['/drafts', draft.id]" class="content-link">
+              {{ draft.title }}
+            </a>
+          </li>
+        </ul>
+        <ng-template #noDrafts>
+          <div class="empty-state">
+            <p>No drafts yet. Start writing your first article!</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Published Articles -->
+      <div class="content-card">
+        <div class="content-header">
+          <h2 class="content-title">Published Articles</h2>
+          <a [routerLink]="['/create']" class="btn btn-secondary">
+            <i class="fas fa-plus"></i>
+            New Article
+          </a>
+        </div>
+        
+        <ul class="content-list" *ngIf="articles.length > 0; else noArticles">
+          <li class="content-item" *ngFor="let article of articles">
+            <a [routerLink]="['/articles', article.id]" class="content-link">
+              {{ article.title }}
+            </a>
+          </li>
+        </ul>
+        <ng-template #noArticles>
+          <div class="empty-state">
+            <p>No published articles yet. Time to share your knowledge!</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Bookmarks -->
+      <div class="content-card">
+        <div class="content-header">
+          <h2 class="content-title">Bookmarked Articles</h2>
+          <!--<a [routerLink]="['/bookmarks']" class="btn btn-secondary">
+            <i class="fas fa-bookmark"></i>
+            View All
+          </a>-->
+        </div>
+        
+        <ul class="content-list" *ngIf="bookmarks.length > 0; else noBookmarks">
+          <li class="content-item" *ngFor="let bookmark of bookmarks">
+            <a [routerLink]="['/articles', bookmark.articleId]" class="content-link">
+              {{ bookmark.articleId }}
+            </a>
+          </li>
+        </ul>
+        <ng-template #noBookmarks>
+          <div class="empty-state">
+            <p>No bookmarks yet. Find interesting articles to save for later!</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

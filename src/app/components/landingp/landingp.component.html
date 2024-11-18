@@ -1,0 +1,74 @@
+<div class="landing-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content" [@fadeIn]="true">
+        <h1>Share Your Voice with Tunisia</h1>
+        <p>A space for authentic stories, opinions, and ideas. Write freely, connect deeply.</p>
+        <button class="btn-primary" (click)="onStartWriting()">
+          Start Writing
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <div class="hero-image" [@slideIn]="true">
+        <div class="preview-card">
+          <div class="preview-header">
+            <div class="avatar"></div>
+            <div class="preview-meta">
+              <div class="preview-line"></div>
+              <div class="preview-line" style="width: 60%"></div>
+            </div>
+          </div>
+          <div class="preview-content">
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+          </div>
+          <div class="preview-actions">
+            <div class="action-dot"></div>
+            <div class="action-dot"></div>
+            <div class="action-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature-card" *ngFor="let feature of features" [@fadeInUp]="true">
+        <div class="feature-icon">
+          <i [class]="feature.icon"></i>
+        </div>
+        <h3>{{feature.title}}</h3>
+        <p>{{feature.description}}</p>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" [@fadeIn]="true">
+      <div class="cta-content">
+        <h2>Join the Growing Community</h2>
+        <p>Start sharing your stories with readers who care about authentic voices.</p>
+        <button class="btn-primary" (click)="onCreateAccount()">
+          Create Your Account
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="footer-section">
+        <div class="logo">Maktoub</div>
+        <p>A platform for Tunisia's voices.</p>
+      </div>
+      
+      <div class="footer-section" *ngFor="let section of footerSections">
+        <h4>{{section.title}}</h4>
+        <ul>
+          <li *ngFor="let link of section.links" (click)="onFooterLinkClick(link)">
+            {{link}}
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>

@@ -1,0 +1,40 @@
+:host {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+router-outlet{
+  z-index: 30;
+}
+  app-nav-bar {
+    position: sticky;
+  top: 0px;
+  z-index: 50;
+  }
+
+
+
+    /* Extra small devices (phones, less than 600px) */
+@media (max-width: 599px) {
+  app-nav-bar{
+    display: none;
+  }
+}
+
+/* Small devices (600px to 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+  /* Styles for small tablets */
+  app-nav-bar{
+    display: none;
+  }
+}
+
+@media (min-width: 768px){
+  app-navbar-mobile{
+    display: none;
+  }
+}
+
+  
+  
+  

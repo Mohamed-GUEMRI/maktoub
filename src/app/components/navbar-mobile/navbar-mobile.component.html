@@ -1,0 +1,135 @@
+<nav class="mobile-navbar">
+  <div class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </div>
+  <div *ngIf="isLogged" class="nav-item" routerLink="/search" routerLinkActive="active">
+    <i class="fas fa-search"></i>
+    <span>Search</span>
+  </div>
+  <div *ngIf="!isLogged" class="nav-item" routerLink="/qsd" routerLinkActive="active">
+    <i class="fas fa-crown"></i>
+    <span>Membership</span>
+  </div>
+  <div class="nav-item write-button" routerLink="/create" routerLinkActive="active">
+    <div class="write-icon-container">
+      <i class="fas fa-pen-fancy"></i>
+    </div>
+  </div>
+  <div *ngIf="isLogged" class="nav-item" (click)="toggleNotifications()" [class.active]="showNotifications">
+    <i class="fas fa-bell"></i>
+    <span class="notification-badge" *ngIf="unreadCount > 0">{{unreadCount}}</span>
+    <span>Notifications</span>
+  </div>
+  <div *ngIf="!isLogged" class="nav-item" routerLink="/ourstory" routerLinkActive="active">
+    <i class="fas fa-book-open"></i>
+    <span>Our Story</span>
+  </div>
+  <div class="nav-item" (click)="toggleProfile()" [class.active]="showProfile">
+    <i class="fas fa-user"></i>
+    <span>Profile</span>
+  </div>
+</nav>
+
+<!-- Notification Panel -->
+<div class="mobile-panel notifications-panel" [class.show]="showNotifications">
+  <div class="panel-header">
+    <h3>Notifications</h3>
+    <i style="cursor: pointer;" class="fas fa-check-double" (click)="markAllAsRead()" title="Mark all as read"></i>
+  </div>
+  <div class="notification-list">
+    <div class="notification-item" *ngFor="let notification of notifications" (click)="handleNotificationClick(notification)">
+      <i class="fas" [ngClass]="{
+        'fa-heart': notification.type === 0,
+        'fa-comment': notification.type === 1,
+        'fa-at': notification.type === 2,
+        'fa-newspaper': notification.type === 3,
+        'fa-info-circle': notification.type === 4
+      }" [style.color]="notification.isRead ? '#6B7280' : '#D26A5C'"></i>
+      <div class="notification-content">
+        <div class="notification-title" [class.unread]="!notification.isRead">{{notification.title}}</div>
+        <div class="notification-text">{{notification.message}}</div>
+        <div class="notification-time">{{notification.createdAt | date:'short'}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Panel -->
+<div class="mobile-panel profile-panel" [class.show]="showProfile">
+  <div class="panel-header">
+    <h3>Profile</h3>
+    <i class="fas fa-times" (click)="toggleProfile()"></i>
+  </div>
+  <div class="profile-content">
+    <div class="profile-item" *ngIf="!isLogged" (click)="openPopup(true)">
+      <i class="fas fa-user-plus"></i>
+      <span>Sign Up</span>
+    </div>
+    <div class="profile-item" *ngIf="!isLogged" (click)="openPopup(false)">
+      <i class="fas fa-sign-in-alt"></i>
+      <span>Sign In</span>
+    </div>
+    <div class="profile-item" *ngIf="isLogged" routerLink="/user/{{userId}}">
+      <i class="fas fa-user-circle"></i>
+      <span>My Profile</span>
+    </div>
+    <div class="profile-item" *ngIf="isLogged" routerLink="/profile">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </div>
+    <div class="profile-item" *ngIf="isLogged" (click)="signOut()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Sign Out</span>
+    </div>
+  </div>
+</div>
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-content">
+    <span class="close-btn" (click)="closePopup()">
+      <i class="fas fa-times"></i>
+    </span>
+    <div class="popup-header">
+      <i class="fas fa-feather-alt text-3xl mb-4"></i>
+      <h2 *ngIf="isSignUpMode">Join Maktoub Now!</h2>
+      <h2 *ngIf="!isSignUpMode">Sign In to Maktoub</h2>
+    </div>
+    
+    <form (submit)="onSubmit()">
+      <div class="input-group" *ngIf="isSignUpMode">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" [(ngModel)]="name" placeholder="Full Name" name="name" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="email" [(ngModel)]="email" placeholder="Email" name="email" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" [(ngModel)]="password" placeholder="Password" name="password" required />
+      </div>
+      <div class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <button type="submit">
+        <i class="fas" [ngClass]="isSignUpMode ? 'fa-user-plus' : 'fa-sign-in-alt'"></i>
+        {{ isSignUpMode ? 'Sign Up' : 'Sign In' }}
+      </button>
+    </form>
+
+    <hr class="auth-divider">
+    <div class="auth-toggle">
+      <p *ngIf="isSignUpMode">
+        Already have an account? <a href="#" (click)="toggleMode()">Sign In</a>
+      </p>
+      <p *ngIf="!isSignUpMode">
+        Don't have an account? <a href="#" (click)="toggleMode()">Sign Up</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="panel-backdrop" [class.show]="showNotifications || showProfile" (click)="closeAllPanels()"></div>
+

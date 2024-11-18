@@ -1,0 +1,109 @@
+<!-- article.component.html -->
+<div class="article-container">
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" [style.width.%]="readingProgress"></div>
+
+  <!-- Article Content -->
+  <article [ngClass]="'font-size-' + fontSize">
+    <header class="article-header">
+      <h1 class="article-title">{{ article?.title }}</h1>
+      <h2 class="article-subtitle">{{ article?.subtitle }}</h2>
+
+      <div class="article-meta">
+        <div class="author-info">
+          <img [src]="coverImageUrl"  class="author-avatar">
+          <div class="author-details">
+            <a [routerLink]="['/author', article?.authorId]" class="author-name">
+              {{ authorName }}
+            </a>
+            <div class="publish-info">
+              <time [dateTime]="article?.createdAt">
+                {{ article?.createdAt | date:'mediumDate' }}
+              </time>
+              <span class="read-time">
+                {{ getReadingTime(article?.content || '') }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-actions">
+          <button class="action-btn view-count">
+            <i class="fas fa-eye"></i>
+            <span>{{ viewCount }}</span>
+          </button>
+          <button class="action-btn" 
+                  (click)="like()" 
+                  [class.liked]="isLiked"
+                  [disabled]="!isLoggedIn">
+            <i class="fas fa-heart"></i>
+            <span>{{ likeCount }}</span>
+          </button>
+          <button class="action-btn " [class.bookmark]="bookmarked" (click)="addBookmark(article?.id)">
+            <i class="fas fa-bookmark"></i>
+            <span>Save</span>
+          </button>
+          <button class="action-btn share" (click)="shareArticle()">
+            <i class="fas fa-share-alt"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-content" [innerHTML]="article?.content"></div>
+
+    <!-- Tags -->
+    <div class="article-tags" *ngIf="tags.length">
+      <a *ngFor="let tag of tags" class="tag">
+        {{ tag }}
+      </a>
+    </div>
+
+    <!-- Comments Section -->
+    <section class="comments-section" *ngIf="isLoggedIn">
+      <h3>Discussion</h3>
+      
+      <div class="comment-form">
+        <textarea 
+          [(ngModel)]="newComment"
+          placeholder="Add to the discussion..."
+          rows="3"
+          maxlength="1000"
+        ></textarea>
+        <div class="form-actions">
+          <span class="char-count">{{ 1000 - newComment.length }}</span>
+          <button 
+            (click)="addComment()"
+            [disabled]="!newComment.trim()"
+            class="submit-btn"
+          >
+            Post Comment
+          </button>
+        </div>
+      </div>
+
+      <div class="comments-list">
+        <div *ngFor="let comment of comments" class="comment">
+          <div class="comment-header">
+            <img [src]="coverImageUrl" class="comment-avatar">
+            <div class="comment-meta">
+              <span class="comment-author">user</span>
+              <time class="comment-time">{{ comment.createdAt | date }}</time>
+            </div>
+          </div>
+          <p class="comment-body">{{ comment.content }}</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <!-- Scroll to top button -->
+  <button 
+    *ngIf="showScrollTop"
+    (click)="scrollToTop()"
+    class="scroll-top-btn"
+    [@fadeInOut]
+  >
+    <i class="fas fa-arrow-up"></i>
+  </button>
+</div>

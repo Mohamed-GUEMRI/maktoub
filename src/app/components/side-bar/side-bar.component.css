@@ -1,0 +1,132 @@
+.sidebar {
+  width: 300px;
+  background-color: white;
+  padding: 24px;
+  position: sticky;
+  top: 90px;
+  border-left: 2px solid #ccc;
+}
+
+.profile-card {
+  padding: 16px;
+  margin-bottom: 34px;
+  border-bottom: 2px solid #ccc;
+
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-icon {
+  width: 64px;
+  height: 64px;
+  background-color: #E4CDA0;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.profile-details {
+  flex-grow: 1;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.user-handle {
+  color: #666;
+  margin: 0;
+}
+
+.user-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.edit-profile-btn {
+  width: 100%;
+  background-color: #D26A5C;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-profile-btn:hover {
+  background-color: #4338ca;
+}
+
+.who-to-follow{
+  border-bottom: 2px solid #ccc;
+}
+
+.who-to-follow h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.user-suggestion {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.user-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #E4CDA0;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.user-info {
+  flex-grow: 1;
+}
+
+.suggested-username {
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.user-bio {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.follow-btn {
+  background-color: #D26A5C;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.follow-btn:hover {
+  background-color: #4338ca;
+}

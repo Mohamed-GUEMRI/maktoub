@@ -1,0 +1,78 @@
+.editor-container {
+  font-family: 'Inter', sans-serif;
+  max-width: 900px;
+  margin: 1rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.editor-toolbar {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rtl-mode .editor-toolbar {
+  flex-direction: row-reverse;
+}
+
+.language-selector {
+  background-color: white;
+  border: 2px solid #eaeaea;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language-selector:hover {
+  background-color: #eaeaea;
+}
+
+.editor-toolbar button {
+  background-color: white;
+  border: 2px solid #eaeaea;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.editor-toolbar button:hover {
+  background-color: #eaeaea;
+}
+
+.editor-content {
+  padding: 2rem;
+  min-height: 400px;
+  cursor: text;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #1a1a1a;
+}
+
+.editor-content:focus {
+  outline: none;
+}
+
+.editor-content[dir="ltr"] ul,
+.editor-content[dir="ltr"] ol {
+  margin-left: 2rem;
+}
+
+.editor-content[dir="rtl"] ul,
+.editor-content[dir="rtl"] ol {
+  margin-right: 2rem;
+}
+
+.editor-content[dir="rtl"] {
+  font-family: 'Inter', 'Noto Kufi Arabic', sans-serif;
+  text-align: right;
+}

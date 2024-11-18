@@ -1,0 +1,4 @@
+{
+    "apiUrlLocal": "https://localhost:7193/api/v1",
+    "apiUrl": "https://192.168.1.185:7193/api/v1"
+}

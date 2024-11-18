@@ -1,0 +1,32 @@
+<div class="sidebar">
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon">{{ user.initial }}</div>
+      <div class="profile-details">
+        <h2 class="username">{{ user.name }}</h2>
+        <p class="user-handle">@{{ user.handle }}</p>
+      </div>
+    </div>
+    <div class="user-stats">
+      <span>{{ user.followersCount }} Followers</span>
+      <span>{{ user.followingCount }} Following</span>
+    </div>
+    <button routerLink="/profile" class="edit-profile-btn">Edit Profile</button>
+  </div>
+
+  <!-- Who to Follow -->
+  <div class="who-to-follow">
+    <h3>Who to Follow</h3>
+    <div class="suggested-users">
+      <div *ngFor="let user of suggestedUsers" class="user-suggestion">
+        <div class="user-icon">{{ user.initial }}</div>
+        <div class="user-info">
+          <p class="suggested-username">{{ user.name }}</p>
+          <p class="user-bio">{{ user.bio }}</p>
+        </div>
+        <button class="follow-btn">Follow</button>
+      </div>
+    </div>
+  </div>
+</div>
