@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Maktoub</title>
+  <link rel="icon" href="favicon-moon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --main-color: #F7C843;
+      --text-dark: #2e2e2e;
+      --text-light: #666;
+      --bg: #fdfcf9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .navbar-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--main-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--main-color);
+    }
+
+    .nav-links a.active {
+      color: var(--main-color);
+      font-weight: 600;
+    }
+
+    .cta-btn {
+      background: var(--main-color);
+      color: var(--text-dark);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--main-color);
+    }
+
+    .cta-btn:hover {
+      background: transparent;
+      color: var(--main-color);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .navbar-right {
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .cta-btn {
+        display: none;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+      .navbar-right {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .cta-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Container */
+    .container {
+      padding: 3rem 1.5rem;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .about-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-light);
+      border-left: 4px solid var(--main-color);
+      padding-left: 1.2rem;
+      background: rgba(247, 200, 67, 0.05);
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      margin: 2.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .signature {
+      margin-top: 2.5rem;
+      text-align: right;
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-title {
+        font-size: 2rem;
+      }
+
+      .about-text {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar">
+    <a class="navbar-logo" href="../index.html">
+      <span>🌙</span>
+      <span>Maktoub</span>
+    </a>
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="./stories.html">Stories</a>
+        <a href="./about.html" class="active">About</a>
+      </div>
+      <a href="#" class="cta-btn">Write You Story</a>
+    </div>
+  </nav>
+
+  <!-- ✅ Page Content -->
+  <div class="container">
+    <div class="about-title">🌙 About Maktoub</div>
+
+    <p class="about-text">
+      <span class="highlight">Maktoub</span> means <em>"it is written."</em> A word that cradles destiny, mystery, and surrender — all at once.
+    </p>
+
+    <p class="about-text">
+      This is not just a website. It's a refuge for moments captured in words — the quiet ones, the fierce ones, the ones that slip between memory and dream. Stories here don’t chase headlines. They seek hearts.
+    </p>
+
+    <p class="about-text">
+      Some are fiction. Some are truth. Most live somewhere in between. What binds them all is feeling — raw, reflective, and deeply human.
+    </p>
+
+    <div class="quote">
+      “Some stories are not written to be understood. They are written to be felt.”
+    </div>
+
+    <p class="about-text">
+      Whether you are here to read, write, remember, or simply wander — welcome. Let the words meet you where you are.
+    </p>
+
+    <p class="about-text">
+      Every piece here was meant to find someone. Maybe one was meant to find you.
+    </p>
+
+    <div class="signature">— The Maktoub Team</div>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer>
+    &copy; 2025 Maktoub — Words Have Their Destiny.
+  </footer>
+
+</body>
+</html>

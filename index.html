@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maktoub | Home</title>
+  <link rel="icon" href="favicon-moon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --main-color: #F7C843;
+      --text-dark: #2e2e2e;
+      --text-light: #666;
+      --bg: #fdfcf9;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --card-shadow-hover: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .navbar-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--main-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--main-color);
+    }
+
+    .nav-links a.active {
+      color: var(--main-color);
+      font-weight: 600;
+    }
+
+    .cta-btn {
+      background: var(--main-color);
+      color: var(--text-dark);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--main-color);
+    }
+
+    .cta-btn:hover {
+      background: transparent;
+      color: var(--main-color);
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-large {
+      background: var(--main-color);
+      color: var(--text-dark);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--main-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .cta-btn-large:hover {
+      background: transparent;
+      color: var(--main-color);
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: linear-gradient(135deg, #fdfcf9 0%, #f8f6f0 100%);
+    }
+
+    .hero-emoji {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Latest Articles */
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .articles {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .article-card {
+      padding: 1.8rem;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid rgba(247, 200, 67, 0.1);
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: rgba(247, 200, 67, 0.3);
+    }
+
+    .article-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .article-meta {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .article-excerpt {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+      color: var(--main-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .read-more:hover {
+      gap: 0.6rem;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .navbar-right {
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .cta-btn {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .cta-btn-large {
+        padding: 0.9rem 1.5rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar-right {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .cta-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .articles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .articles {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar">
+    <a class="navbar-logo" href="index.html">
+      <span>🌙</span>
+      <span>Maktoub</span>
+    </a>
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="./pages/stories.html">Stories</a>
+        <a href="./pages/about.html">About</a>
+      </div>
+      <a href="https://www.google.com" class="cta-btn" target="_blank">Write You Story</a>
+    </div>
+  </nav>
+
+  <!-- ✅ Hero Section -->
+  <section class="hero">
+    <div class="hero-emoji">📖</div>
+    <h1>Stories That Were Meant To Be</h1>
+    <p>Welcome to <strong>Maktoub</strong> — a space where stories find you, not the other way around.</p>
+    <a href="#" class="cta-btn-large">
+      Start Writing
+      <span>✨</span>
+    </a>
+  </section>
+
+  <!-- ✅ Latest Articles -->
+  <section class="section">
+    <h2 class="section-title">Latest Drops</h2>
+    <div class="articles">
+      <a href="./pages/article.html" class="article-card">
+        <div class="article-title">📎 The Girl With the Paper Planes</div>
+        <div class="article-meta">by Salma · Aug 2, 2025</div>
+        <div class="article-excerpt">Sometimes the smallest gestures carry the heaviest meanings. A story about connection across distances.</div>
+        <div class="read-more">Read more <span>→</span></div>
+      </a>
+      <a href="./pages/article-AR.html" class="article-card">
+        <div class="article-title">📎 الفتاة مع الطائرات الورقية</div>
+        <div class="article-meta">by Salma • Aug 2, 2025</div>
+        <div class="article-excerpt">أحيانًا، تحمل أصغر الإيماءات أعمق المعاني. قصة عن الاتصال عبر المسافات...</div>
+        <div class="read-more">Read more <span>→</span></div>
+      </a>
+      <a href="./pages/article.html" class="article-card">
+        <div class="article-title">💌 Letter to a Stranger</div>
+        <div class="article-meta">by M. · July 30, 2025</div>
+        <div class="article-excerpt">What would you say to someone you've never met but somehow always known? A meditation on human connection.</div>
+        <div class="read-more">Read more <span>→</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer>
+    &copy; 2025 Maktoub — Words Have Their Destiny.
+  </footer>
+
+</body>
+</html>
