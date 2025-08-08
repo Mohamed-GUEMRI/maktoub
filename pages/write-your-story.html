@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FEGT3V5TLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FEGT3V5TLE');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Maktoub</title>
+  <link rel="icon" href="favicon-moon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --main-color: #F7C843;
+      --text-dark: #2e2e2e;
+      --text-light: #666;
+      --bg: #fdfcf9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .navbar-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--main-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--main-color);
+    }
+
+    .nav-links a.active {
+      color: var(--main-color);
+      font-weight: 600;
+    }
+
+    .cta-btn {
+      background: var(--main-color);
+      color: var(--text-dark);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--main-color);
+    }
+
+    .cta-btn:hover {
+      background: transparent;
+      color: var(--main-color);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .navbar-right {
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .cta-btn {
+        display: none;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+      .navbar-right {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .cta-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 1rem;
+    }
+
+    .tips {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+}
+
+.tips p {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: #444;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.tips ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.tip-item {
+  background: #fff8dc; /* very soft warm yellow */
+  border: 1.5px solid var(--main-color);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 6px rgba(247, 200, 67, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.tip-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(247, 200, 67, 0.4);
+}
+
+.tip-item strong {
+  color: var(--main-color);
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+}
+
+.tip-icon {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 150px;
+      max-height: 400px;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--main-color);
+      box-shadow: 0 0 5px var(--main-color);
+    }
+
+    .required {
+      color: red;
+      margin-left: 0.2rem;
+    }
+
+    button[type="submit"] {
+      background: var(--main-color);
+      color: var(--text-dark);
+      border: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: center;
+      width: 50%;
+      min-width: 150px;
+    }
+
+    button[type="submit"]:hover {
+      background: transparent;
+      color: var(--main-color);
+      border: 2px solid var(--main-color);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+  <nav class="navbar">
+    <a class="navbar-logo" href="../index.html">
+      <span>🌙</span>
+      <span>Unposted</span>
+    </a>
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="./stories.html">Stories</a>
+        <a href="./about.html" class="active">About</a>
+      </div>
+      <a href="./write-your-story.html" class="cta-btn">Write Your Story</a>
+    </div>
+  </nav>
+
+    <!-- Page Content -->
+  <div class="container">
+    <h1>✍ Share your story, now!</h1>
+
+    <div class="tips">
+  <p>This is your cozy corner to share your thoughts, stories, and reflections — just the way you want. Here are some friendly tips to help your writing shine:</p>
+
+  <ul>
+    <li class="tip-item"><span class="tip-icon">✨</span><strong>Keep It Clear and Engaging:</strong> Focus on one main idea or story. Aim for 150 to 800 words to keep readers interested and your message memorable.</li>
+
+    <li class="tip-item"><span class="tip-icon">📝</span><strong>Structure Your Story:</strong> Use headings, short paragraphs, or bullet points to break your text into easy-to-read sections.</li>
+
+    <li class="tip-item"><span class="tip-icon">🎨</span><strong>Show, Don’t Just Tell:</strong> Use vivid details and examples to bring your story to life. Let readers feel what you felt.</li>
+
+    <li class="tip-item"><span class="tip-icon">💖</span><strong>Be Yourself:</strong> Write like you’re chatting with a friend. Honest, simple language connects best — your unique voice is your strength.</li>
+
+    <li class="tip-item"><span class="tip-icon">🔍</span><strong>Edit and Proofread:</strong> Read your story aloud before sharing. Fix confusing parts and typos. A little polish makes a big difference.</li>
+
+    <li class="tip-item"><span class="tip-icon">🌟</span><strong>Make It Meaningful:</strong> Think about the feeling or message you want to leave behind — hope, curiosity, or a smile. Your words might be exactly what someone needs.</li>
+  </ul>
+</div>
+
+
+
+    <form action="https://formsubmit.co/youremail@mohguemri17@gmail.com" method="POST">
+      <label for="name">Name or Pen Name <span class="required">*</span></label>
+      <input type="text" id="name" name="name" placeholder="Your name or nickname" required />
+
+      <label for="email">Email <span class="required">*</span></label>
+      <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+      <label for="language">Language of your story <span class="required">*</span></label>
+      <select id="language" name="language" required>
+        <option value="" disabled selected>Select language</option>
+        <option value="English/French">English / French</option>
+        <option value="Arabic/Darja">Arabic / Darja</option>
+        <option value="Mixed">A mix</option>
+      </select>
+
+      <label for="emoji">Story Emoji <span class="required">*</span></label>
+      <input type="text" id="emoji" name="emoji" placeholder="Choose one emoji that fits your story" required />
+
+      <label for="title">Story Title <span class="required">*</span></label>
+      <input type="text" id="title" name="title" placeholder="Give your story a captivating title" required />
+
+      <label for="content">Story Content <span class="required">*</span></label>
+      <textarea id="content" name="content" placeholder="Write your story here..." required></textarea>
+
+      <label for="note">Optional Note (e.g., something you want us to know about your story)</label>
+      <textarea id="note" name="note" placeholder="Optional note..."></textarea>
+
+      <!-- Formsubmit honeypot for spam prevention -->
+      <input type="text" name="_honey" style="display:none" />
+
+      <!-- Disable captcha for simplicity -->
+      <input type="hidden" name="_captcha" value="false" />
+
+      <!-- Redirect to thank you page or back to home -->
+      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" />
+
+      <button type="submit">Send Your Story</button>
+    </form>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer>
+    &copy; 2025 Unposted — Because some words are too good to stay hidden.
+  </footer>
+
+</body>
+</html>
+
+
