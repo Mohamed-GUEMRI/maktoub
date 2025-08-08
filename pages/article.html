@@ -316,6 +316,66 @@
 #close-modal:hover {
   color: #f7a600;
 }
+
+.sponsor-block {
+  background: #fff9e6; /* very soft yellow */
+  border: 1.5px solid #f7c843; /* main-color */
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin: 3rem 0;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 6px 15px rgba(247, 200, 67, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.sponsor-block:hover {
+  box-shadow: 0 8px 20px rgba(247, 200, 67, 0.35);
+}
+
+.sponsor-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b07f00; /* darker yellow */
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sponsor-link img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.sponsor-link img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.sponsor-desc {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 480px) {
+  .sponsor-block {
+    padding: 0.8rem 1rem;
+    margin: 2rem 0;
+  }
+  .sponsor-desc {
+    font-size: 0.9rem;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -347,12 +407,28 @@
       <p>
         In a world heavy with noise, we often forget the delicate music of stillness. But silence — when listened to — can speak louder than sound. I remember the moment I sat alone under an olive tree, the book in my lap untouched. The air moved gently, and I felt the earth breathe.
       </p>
-
+      <!-- Sponsor Block 1 -->
+<div class="sponsor-block" role="complementary" aria-label="Sponsored content">
+  <div class="sponsor-label">Sponsored</div>
+  <a href="https://sponsor1.com" target="_blank" rel="noopener noreferrer" class="sponsor-link" aria-label="Visit Sponsor 1 website">
+    <img src="../images/banner1.jpg" alt="Sponsor 1 banner" />
+  </a>
+  <p class="sponsor-desc">
+    Discover amazing deals and support our blog by checking out Sponsor 1’s exclusive offers tailored for readers like you.
+  </p>
+</div>
+      
       <h2>A Moment in Time</h2>
       <p>
         Sometimes, what we write is less about explaining and more about remembering. A scent, a glance, a lost letter — they resurface in ink. This piece is an invitation to pause and notice. Perhaps, just for a few lines, you will feel what I felt.
       </p>
-
+      <!-- Sponsor Block 2 -->
+<div class="sponsor-block" role="complementary" aria-label="Sponsored content">
+  <div class="sponsor-label">Advertisement</div>
+  <a href="https://sponsor2.com" target="_blank" rel="noopener noreferrer" class="sponsor-link" aria-label="Visit Sponsor 2 website">
+    <img src="../images/banner2.webp" alt="Sponsor 2 banner" />
+  </a>
+</div>
       <blockquote>
         "Some stories are not written to be understood. They are written to be felt."
       </blockquote>
