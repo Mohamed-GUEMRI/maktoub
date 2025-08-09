@@ -460,6 +460,11 @@
     // Open popup window
     window.open(facebookUrl, 'fbShareWindow', 'width=600,height=400');
   });
+
+  document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+});
 </script>
 </body>
 </html>

@@ -548,6 +548,11 @@
    document.querySelector('.announcement-close').addEventListener('click', () => {
     document.getElementById('announcement-bar').style.display = 'none';
   });
+
+  document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+});
 </script>
 
 </body>
