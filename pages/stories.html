@@ -7,13 +7,12 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-FEGT3V5TLE');
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stories | Unposted</title>
-    <meta property="og:image" content="https://mohamed-guemri.github.io/unposted/images/moon.png" />
+  <meta property="og:image" content="https://mohamed-guemri.github.io/unposted/images/moon.png" />
   <link rel="icon" href="favicon-moon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -34,7 +33,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, #fffdf7 0%, #fdfaf3 100%);
       color: var(--text-dark);
       line-height: 1.6;
     }
@@ -77,7 +76,6 @@
       color: var(--text-dark);
       transition: all 0.3s ease;
       padding: 0.5rem 0;
-      position: relative;
     }
 
     .nav-links a:hover {
@@ -111,45 +109,17 @@
       .navbar {
         padding: 1rem;
       }
-
       .navbar-right {
         gap: 1rem;
       }
-
       .nav-links {
         gap: 1rem;
       }
-
-      .nav-links a {
-        font-size: 0.9rem;
-      }
-
       .cta-btn {
         display: none;
       }
-
-      .hero p {
-        font-size: 1.1rem;
-      }
-
     }
 
-    @media (max-width: 600px) {
-      .navbar-right {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-end;
-      }
-
-      .nav-links {
-        gap: 0.8rem;
-      }
-
-      .cta-btn {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
-      }
-    }
     /* Container */
     .container {
       padding: 3rem 1rem;
@@ -157,73 +127,109 @@
       margin: auto;
     }
 
+    /* Page title with underline */
     .page-title {
       text-align: center;
       font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: var(--text-dark);
+      margin-bottom: 1.5rem;
       font-weight: 700;
+      position: relative;
+    }
+    .page-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--main-color);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
     }
 
-    /* Story Grid */
+    /* Search box - glass effect */
+    .search-wrapper {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    #story-search {
+      padding: 0.8rem 1.2rem;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 50px;
+      border: none;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(6px);
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    #story-search:focus {
+      box-shadow: 0 4px 15px rgba(247,200,67,0.3);
+      outline: none;
+    }
+
+    /* Story grid */
     .story-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-
     @media (min-width: 600px) {
-      .story-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .story-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (min-width: 900px) {
-      .story-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .story-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* Story Card */
+    /* Story cards */
     .story-card {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 1.8rem;
       box-shadow: var(--card-shadow);
       transition: all 0.3s ease;
+      border: 1px solid rgba(247, 200, 67, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       text-decoration: none;
       color: inherit;
-      border: 1px solid rgba(247, 200, 67, 0.1);
     }
-
     .story-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px) scale(1.02);
       box-shadow: var(--card-shadow-hover);
       border-color: rgba(247, 200, 67, 0.3);
     }
-
     .story-emoji {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 1rem;
+      transition: transform 0.3s ease;
     }
-
+    .story-card:hover .story-emoji {
+      transform: scale(1.2) rotate(5deg);
+    }
     .story-title {
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 0.8rem;
-      color: var(--text-dark);
     }
-
     .story-meta {
       font-size: 0.9rem;
       color: var(--text-light);
       margin-bottom: 1rem;
     }
-
     .story-snippet {
       font-size: 0.95rem;
       color: var(--text-light);
       line-height: 1.6;
+    }
+
+    /* No results */
+    #no-results {
+      display: none;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-top: 2rem;
     }
 
     /* Footer */
@@ -236,50 +242,11 @@
       border-top: 1px solid #eee;
       margin-top: 4rem;
     }
-
-        /* Modal styles */
-.modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  box-shadow: var(--card-shadow);
-}
-
-#close-modal {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--main-color);
-  cursor: pointer;
-  font-weight: 700;
-  transition: color 0.3s ease;
-}
-
-#close-modal:hover {
-  color: #f7a600;
-}
   </style>
 </head>
 <body>
 
-  <!-- ✅ Navbar -->
+  <!-- Navbar -->
   <nav class="navbar">
     <a class="navbar-logo" href="../index.html">
       <span>🌙</span>
@@ -291,132 +258,90 @@
         <a href="./stories.html" class="active">Stories</a>
         <a href="./about.html">About</a>
       </div>
-      <a href="./write-your-story.html" class="cta-btn">✨Write You Story</a>
+      <a href="./write-your-story.html" class="cta-btn">✨Write Your Story</a>
       <a href="#" id="subscribe-btn-navbar" class="cta-btn" style="background:#f0e342; color:#222; border-color:#f0e342;">📬Subscribe</a>
     </div>
   </nav>
 
-  <!-- ✅ Page Content -->
+  <!-- Page content -->
   <div class="container">
     <div class="page-title">📖 Stories</div>
 
-    <div class="story-grid">
+    <!-- Search -->
+    <div class="search-wrapper">
+      <input type="text" id="story-search" placeholder="🔍 Search stories..." aria-label="Search stories">
+    </div>
 
-      <!-- ✅ English Story Card -->
+    <div class="story-grid">
       <a href="article.html" class="story-card">
         <div class="story-emoji">🕊️</div>
         <div class="story-title">Finding Peace in Chaos</div>
         <div class="story-meta">by Eliana • Aug 7, 2025</div>
         <div class="story-snippet">In a world of noise and speed, we forget the gift of stillness. This story explores the quiet revolutions within...</div>
       </a>
-
-      <!-- ✅ Arabic Story Card (with English meta) -->
       <a href="article.html" class="story-card">
         <div class="story-emoji">🔥</div>
-        <div class="story-title">النار التي بداخلي</div> <!-- Arabic Title -->
-        <div class="story-meta">by Renzo • July 22, 2025</div> <!-- English Meta -->
-        <div class="story-snippet">لم يولد ليكون صامتًا. في أنفاسه كانت تحترق أجيال من الصمود — وفي يوم ما، ستشتعل...</div> <!-- Arabic Snippet -->
+        <div class="story-title">النار التي بداخلي</div>
+        <div class="story-meta">by Renzo • July 22, 2025</div>
+        <div class="story-snippet">لم يولد ليكون صامتًا. في أنفاسه كانت تحترق أجيال من الصمود — وفي يوم ما، ستشتعل...</div>
       </a>
-
-      <!-- ✅ English Story Card -->
       <a href="article.html" class="story-card">
         <div class="story-emoji">🌌</div>
         <div class="story-title">Echoes in the Void</div>
         <div class="story-meta">Unknown • June 30, 2025</div>
         <div class="story-snippet">A mysterious signal. A lone spaceship. And the unbearable weight of memory echoing through the stars...</div>
       </a>
-
-      <!-- ✅ Arabic Story Card (with English meta) -->
       <a href="article.html" class="story-card">
         <div class="story-emoji">📎</div>
-        <div class="story-title">الفتاة مع الطائرات الورقية</div> <!-- Arabic Title -->
-        <div class="story-meta">by Salma • Aug 2, 2025</div> <!-- English Meta -->
-        <div class="story-snippet">أحيانًا، تحمل أصغر الإيماءات أعمق المعاني. قصة عن الاتصال عبر المسافات...</div> <!-- Arabic Snippet -->
+        <div class="story-title">الفتاة مع الطائرات الورقية</div>
+        <div class="story-meta">by Salma • Aug 2, 2025</div>
+        <div class="story-snippet">أحيانًا، تحمل أصغر الإيماءات أعمق المعاني. قصة عن الاتصال عبر المسافات...</div>
       </a>
-
-      <!-- ✅ English Story Card -->
       <a href="article.html" class="story-card">
         <div class="story-emoji">🧷</div>
         <div class="story-title">Threads of Memory</div>
         <div class="story-meta">Unknown • Aug 1, 2025</div>
         <div class="story-snippet">In the fabric of our lives, some threads shine brighter than others. This is about finding the golden ones...</div>
       </a>
-
-      <!-- ✅ Arabic Story Card (with English meta) -->
       <a href="article.html" class="story-card">
         <div class="story-emoji">💌</div>
-        <div class="story-title">رسالة إلى غريب</div> <!-- Arabic Title -->
-        <div class="story-meta">by M. • July 30, 2025</div> <!-- English Meta -->
-        <div class="story-snippet">ماذا ستقول لشخص لم تلتقي به أبدًا ولكنك somehow دائمًا كنت تعرفه؟ تأملات في الاتصال البشري...</div> <!-- Arabic Snippet -->
+        <div class="story-title">رسالة إلى غريب</div>
+        <div class="story-meta">by M. • July 30, 2025</div>
+        <div class="story-snippet">ماذا ستقول لشخص لم تلتقي به أبدًا ولكنك somehow دائمًا كنت تعرفه؟ تأملات في الاتصال البشري...</div>
       </a>
-
     </div>
+
+    <!-- No results -->
+    <div id="no-results">😔 No stories match your search.</div>
   </div>
 
-  <!-- ✅ Footer -->
+  <!-- Footer -->
   <footer>
     &copy; 2025 Unposted — Because some words are too good to stay hidden.
   </footer>
-<!-- Newsletter Subscription Modal -->
-<div id="subscribe-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="display:none;">
-  <div class="modal-content" role="document">
-    <button id="close-modal" aria-label="Close Subscription Form">&times;</button>
-    <h2 id="modal-title" style="color: var(--main-color); margin-bottom: 1rem;">Subscribe to Our Newsletter</h2>
-    <form id="subscribe-form" action="https://formsubmit.co/mohguemri17@gmail.com" method="POST" target="_blank">
-      <label for="email-subscribe" style="font-weight:600;">Email Address <span style="color:red;">*</span></label>
-      <input type="email" id="email-subscribe" name="email" placeholder="Enter your email" required style="padding:0.7rem 1rem; border-radius:8px; border:1.5px solid #ccc; font-size:1rem; width:100%; margin-bottom:1rem;"/>
-      
-      <!-- Anti-spam honeypot -->
-      <input type="text" name="_honey" style="display:none" />
-      <input type="hidden" name="_captcha" value="false" />
-      <!-- Disable captcha for simplicity -->
-      <input type="hidden" name="_captcha" value="false" />
 
-      <!-- Redirect to thank you page or back to home -->
-      <input type="hidden" name="_next" value="https://mohamed-guemri.github.io/unposted/pages/thank-you.html" />
-      
-      <button type="submit" style="background: var(--main-color); color: var(--text-dark); padding: 0.8rem 1.5rem; font-weight:700; border:none; border-radius:8px; cursor:pointer; width:100%;">Subscribe</button>
-    </form>
-  </div>
-</div>
 <script>
-  const modal = document.getElementById('subscribe-modal');
-  const btnNavbar = document.getElementById('subscribe-btn-navbar');
-  const closeBtn = document.getElementById('close-modal');
+  const searchInput = document.getElementById('story-search');
+  const stories = document.querySelectorAll('.story-card');
+  const noResults = document.getElementById('no-results');
 
-  function openModal() {
-    modal.style.display = 'flex';
-    modal.setAttribute('aria-hidden', 'false');
-  }
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    let visibleCount = 0;
 
-  function closeModal() {
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-  }
+    stories.forEach(story => {
+      const title = story.querySelector('.story-title').textContent.toLowerCase();
+      const snippet = story.querySelector('.story-snippet').textContent.toLowerCase();
+      const meta = story.querySelector('.story-meta').textContent.toLowerCase();
+      if (title.includes(query) || snippet.includes(query) || meta.includes(query)) {
+        story.style.display = '';
+        visibleCount++;
+      } else {
+        story.style.display = 'none';
+      }
+    });
 
-  btnNavbar.addEventListener('click', e => {
-    e.preventDefault();
-    openModal();
-  });
-
- 
-
-  closeBtn.addEventListener('click', () => {
-    closeModal();
-  });
-
-  // Close modal if clicked outside content
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  // Optional: Close modal with Escape key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.style.display === 'flex') {
-      closeModal();
-    }
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
   });
 </script>
 </body>
