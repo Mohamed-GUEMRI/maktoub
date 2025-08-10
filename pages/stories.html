@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FEGT3V5TLE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-FEGT3V5TLE');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FEGT3V5TLE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FEGT3V5TLE');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stories | Unposted</title>
@@ -24,223 +24,187 @@
       --card-shadow: 0 4px 12px rgba(0,0,0,0.06);
       --card-shadow-hover: 0 8px 25px rgba(0,0,0,0.1);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(180deg, #fffdf7 0%, #fdfaf3 100%);
       color: var(--text-dark);
       line-height: 1.6;
     }
-
     /* Navbar */
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: white;
-      border-bottom: 1px solid #eee;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; background: white; border-bottom: 1px solid #eee;
       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
-
-    .navbar-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--main-color);
-      text-decoration: none;
+    .navbar-logo { font-size: 1.5rem; font-weight: bold; color: var(--main-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .navbar-right { display: flex; align-items: center; gap: 2rem; }
+    .nav-links { display: flex; gap: 2rem; font-size: 0.95rem; }
+    .nav-links a { text-decoration: none; color: var(--text-dark); transition: all 0.3s ease; padding: 0.5rem 0; }
+    .nav-links a:hover { color: var(--main-color); }
+    .nav-links a.active { color: var(--main-color); font-weight: 600; }
+    .cta-btn {
+      background: var(--main-color); color: var(--text-dark); padding: 0.7rem 1.5rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; border: 2px solid var(--main-color);
+    }
+    .cta-btn:hover { background: transparent; color: var(--main-color); transform: translateY(-2px); }
+    @media (max-width: 768px) {
+      .navbar { padding: 1rem; }
+      .navbar-right { gap: 1rem; }
+      .nav-links { gap: 1rem; }
+      .cta-btn { display: none; }
+    }
+    /* Container */
+    .container { padding: 3rem 1rem; max-width: 1200px; margin: auto; }
+    /* Page title */
+    .page-title {
+      text-align: center; font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 700; position: relative;
+    }
+    .page-title::after {
+      content: ""; display: block; width: 60px; height: 4px; background: var(--main-color); margin: 0.5rem auto 0; border-radius: 2px;
+    }
+    /* Search box */
+    .search-wrapper { text-align: center; margin-bottom: 1rem; }
+    #story-search {
+      padding: 0.8rem 1.2rem; width: 100%; max-width: 420px; border-radius: 50px; border: none;
+      background: rgba(255,255,255,0.8); backdrop-filter: blur(6px);
+      font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;
+    }
+    #story-search:focus { 
+      box-shadow: 0 4px 15px rgba(247,200,67,0.3); 
+      outline: none; 
+      transform: scale(1.02);
+    }
+    
+    /* Filters wrapper */
+    .filters-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Filter dropdowns */
+    .filter-group {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-
-    .navbar-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: all 0.3s ease;
-      padding: 0.5rem 0;
-    }
-
-    .nav-links a:hover {
-      color: var(--main-color);
-    }
-
-    .nav-links a.active {
-      color: var(--main-color);
-      font-weight: 600;
-    }
-
-    .cta-btn {
-      background: var(--main-color);
-      color: var(--text-dark);
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
+    
+    .filter-group label {
       font-size: 0.9rem;
-      transition: all 0.3s ease;
-      border: 2px solid var(--main-color);
+      font-weight: 600;
+      color: var(--text-dark);
     }
-
-    .cta-btn:hover {
-      background: transparent;
-      color: var(--main-color);
-      transform: translateY(-2px);
+    
+    select {
+      padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #ccc; cursor: pointer;
+      background: white; font-size: 0.9rem; min-width: 120px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 1rem;
-      }
-      .navbar-right {
-        gap: 1rem;
-      }
-      .nav-links {
-        gap: 1rem;
-      }
-      .cta-btn {
-        display: none;
-      }
-    }
-
-    /* Container */
-    .container {
-      padding: 3rem 1rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    /* Page title with underline */
-    .page-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      position: relative;
-    }
-    .page-title::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: var(--main-color);
-      margin: 0.5rem auto 0;
-      border-radius: 2px;
-    }
-
-    /* Search box - glass effect */
-    .search-wrapper {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-    #story-search {
-      padding: 0.8rem 1.2rem;
-      width: 100%;
-      max-width: 420px;
-      border-radius: 50px;
-      border: none;
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(6px);
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
-    #story-search:focus {
-      box-shadow: 0 4px 15px rgba(247,200,67,0.3);
+    
+    select:focus {
       outline: none;
+      border-color: var(--main-color);
+      box-shadow: 0 0 5px rgba(247,200,67,0.3);
     }
-
+    
     /* Story grid */
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    @media (min-width: 600px) {
-      .story-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 900px) {
-      .story-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
+    .story-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 600px) { .story-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .story-grid { grid-template-columns: repeat(3, 1fr); } }
+    
     /* Story cards */
     .story-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 1.8rem;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
+      background: #fff; border-radius: 16px; padding: 1.8rem; box-shadow: var(--card-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       border: 1px solid rgba(247, 200, 67, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-decoration: none;
-      color: inherit;
+      display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none; color: inherit;
+      animation: fadeIn 0.4s ease;
     }
     .story-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-5px) scale(1.015);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       border-color: rgba(247, 200, 67, 0.3);
     }
-    .story-emoji {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
+    .story-emoji { font-size: 2.8rem; margin-bottom: 1rem; transition: transform 0.3s ease; }
+    .story-card:hover .story-emoji { transform: scale(1.2) rotate(5deg); }
+    .story-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .story-meta { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem; }
+    .story-category {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
     }
-    .story-card:hover .story-emoji {
-      transform: scale(1.2) rotate(5deg);
-    }
-    .story-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-    .story-meta {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-    .story-snippet {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
+    .story-snippet { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
+    
+    /* Category colors */
+    .story-category[data-category="Personal"] { background: #ffd166; color: #5a3d00; }
+    .story-category[data-category="Culture"] { background: #ef476f; color: white; }
+    .story-category[data-category="Politics"] { background: #073b4c; color: white; }
+    .story-category[data-category="Religion"] { background: #8d6e63; color: white; }
+    .story-category[data-category="Love"] { background: #ff4d6d; color: white; }
+    .story-category[data-category="Family"] { background: #06d6a0; color: white; }
+    .story-category[data-category="Work"] { background: #118ab2; color: white; }
+    .story-category[data-category="Travel"] { background: #ff9f1c; color: white; }
+    .story-category[data-category="Education"] { background: #2ec4b6; color: white; }
+    .story-category[data-category="Health"] { background: #06b6d4; color: white; }
+    .story-category[data-category="Society"] { background: #7209b7; color: white; }
+    .story-category[data-category="Other"] { background: #adb5bd; color: black; }
+    
+    /* Highlight */
+    mark { background: #fff3a3; padding: 0; }
+    
     /* No results */
-    #no-results {
-      display: none;
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--text-light);
-      margin-top: 2rem;
+    #no-results { display: none; text-align: center; font-size: 1.1rem; color: var(--text-light); margin-top: 2rem; }
+    
+    /* Pagination */
+    #pagination { text-align: center; margin-top: 2rem; }
+    #pagination button {
+      margin: 0 5px; padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #ccc; cursor: pointer;
+      background: white;
+      transition: all 0.3s ease;
     }
-
+    #pagination button:hover {
+      background: var(--main-color);
+      border-color: var(--main-color);
+      color: black;
+    }
+    #pagination button.active { background: var(--main-color); border-color: var(--main-color); color: black; }
+    
+    /* Mobile responsive filters */
+    @media (max-width: 768px) {
+      .filters-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .filter-group {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      select {
+        min-width: 200px;
+      }
+    }
+    
     /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-      background: #fff;
-      border-top: 1px solid #eee;
-      margin-top: 4rem;
+    footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: var(--text-light); background: #fff; border-top: 1px solid #eee; margin-top: 4rem; }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -248,10 +212,7 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <a class="navbar-logo" href="../index.html">
-      <span>🌙</span>
-      <span>Unposted</span>
-    </a>
+    <a class="navbar-logo" href="../index.html"><span>🌙</span><span>Unposted</span></a>
     <div class="navbar-right">
       <div class="nav-links">
         <a href="../index.html">Home</a>
@@ -272,47 +233,98 @@
       <input type="text" id="story-search" placeholder="🔍 Search stories..." aria-label="Search stories">
     </div>
 
+    <!-- Filters -->
+    <div class="filters-wrapper">
+      <div class="filter-group">
+        <select id="category-filter">
+          <option value="">All Categories</option>
+          <option value="Personal">Personal</option>
+          <option value="Culture">Culture</option>
+          <option value="Politics">Politics</option>
+          <option value="Religion">Religion</option>
+          <option value="Love">Love</option>
+          <option value="Family">Family</option>
+          <option value="Work">Work</option>
+          <option value="Travel">Travel</option>
+          <option value="Education">Education</option>
+          <option value="Health">Health</option>
+          <option value="Society">Society</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <select id="sort-select">
+          <option value="newest">📅 Newest First</option>
+          <option value="oldest">📅 Oldest First</option>
+          <option value="az">🔤 A-Z</option>
+        </select>
+      </div>
+    </div>
+
     <div class="story-grid">
-      <a href="article.html" class="story-card">
+      
+      <a href="article.html" class="story-card" data-category="Personal">
         <div class="story-emoji">🕊️</div>
+        <div class="story-category" data-category="Personal">Personal</div>
         <div class="story-title">Finding Peace in Chaos</div>
         <div class="story-meta">by Eliana • Aug 7, 2025</div>
         <div class="story-snippet">In a world of noise and speed, we forget the gift of stillness. This story explores the quiet revolutions within...</div>
       </a>
-      <a href="article.html" class="story-card">
+      
+      <a href="article.html" class="story-card" data-category="Culture">
         <div class="story-emoji">🔥</div>
+        <div class="story-category" data-category="Culture">Culture</div>
         <div class="story-title">النار التي بداخلي</div>
         <div class="story-meta">by Renzo • July 22, 2025</div>
         <div class="story-snippet">لم يولد ليكون صامتًا. في أنفاسه كانت تحترق أجيال من الصمود — وفي يوم ما، ستشتعل...</div>
       </a>
-      <a href="article.html" class="story-card">
+      
+      <a href="article.html" class="story-card" data-category="Travel">
         <div class="story-emoji">🌌</div>
+        <div class="story-category" data-category="Travel">Travel</div>
         <div class="story-title">Echoes in the Void</div>
         <div class="story-meta">Unknown • June 30, 2025</div>
         <div class="story-snippet">A mysterious signal. A lone spaceship. And the unbearable weight of memory echoing through the stars...</div>
       </a>
-      <a href="article.html" class="story-card">
+      
+      <a href="article.html" class="story-card" data-category="Love">
         <div class="story-emoji">📎</div>
+        <div class="story-category" data-category="Love">Love</div>
         <div class="story-title">الفتاة مع الطائرات الورقية</div>
         <div class="story-meta">by Salma • Aug 2, 2025</div>
         <div class="story-snippet">أحيانًا، تحمل أصغر الإيماءات أعمق المعاني. قصة عن الاتصال عبر المسافات...</div>
       </a>
-      <a href="article.html" class="story-card">
+      
+      <a href="article.html" class="story-card" data-category="Family">
         <div class="story-emoji">🧷</div>
+        <div class="story-category" data-category="Family">Family</div>
         <div class="story-title">Threads of Memory</div>
         <div class="story-meta">Unknown • Aug 1, 2025</div>
         <div class="story-snippet">In the fabric of our lives, some threads shine brighter than others. This is about finding the golden ones...</div>
       </a>
-      <a href="article.html" class="story-card">
+      
+      <a href="article.html" class="story-card" data-category="Society">
         <div class="story-emoji">💌</div>
+        <div class="story-category" data-category="Society">Society</div>
         <div class="story-title">رسالة إلى غريب</div>
         <div class="story-meta">by M. • July 30, 2025</div>
         <div class="story-snippet">ماذا ستقول لشخص لم تلتقي به أبدًا ولكنك somehow دائمًا كنت تعرفه؟ تأملات في الاتصال البشري...</div>
       </a>
+      
+      <a href="article.html" class="story-card" data-category="Work">
+        <div class="story-emoji">💼</div>
+        <div class="story-category" data-category="Work">Work</div>
+        <div class="story-title">The Office Window</div>
+        <div class="story-meta">by Alex • July 28, 2025</div>
+        <div class="story-snippet">Sometimes the most profound realizations come during the most mundane moments. A story about finding purpose...</div>
+      </a>
+      
     </div>
 
-    <!-- No results -->
-    <div id="no-results">😔 No stories match your search.</div>
+    <div id="no-results">
+😔 No stories match your search.</div>
+    <div id="pagination"></div>
   </div>
 
   <!-- Footer -->
@@ -322,39 +334,127 @@
         <img src="https://hitwebcounter.com/counter/counter.php?page=21359021&style=0006&nbdigits=6&type=ip&initCount=0" 
              alt="Visitor Counter" 
              style="vertical-align:middle; margin:0 5px;"/>
-        Unposters already found this page.
+        Unposters already found us.
     </p>
     &copy; 2025 Unposted — Because some words are too good to stay hidden.
-        <!-- hitwebcounter Code START -->
   </footer>
 
 <script>
-  const searchInput = document.getElementById('story-search');
-  const stories = document.querySelectorAll('.story-card');
-  const noResults = document.getElementById('no-results');
+const searchInput = document.getElementById('story-search');
+const categoryFilter = document.getElementById('category-filter');
+const sortSelect = document.getElementById('sort-select');
+const stories = document.querySelectorAll('.story-card');
+const noResults = document.getElementById('no-results');
+const pagination = document.getElementById('pagination');
 
-  searchInput.addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    let visibleCount = 0;
+const storiesPerPage = 6;
+let currentPage = 1;
 
-    stories.forEach(story => {
-      const title = story.querySelector('.story-title').textContent.toLowerCase();
-      const snippet = story.querySelector('.story-snippet').textContent.toLowerCase();
-      const meta = story.querySelector('.story-meta').textContent.toLowerCase();
-      if (title.includes(query) || snippet.includes(query) || meta.includes(query)) {
-        story.style.display = '';
-        visibleCount++;
-      } else {
-        story.style.display = 'none';
-      }
-    });
+function highlightText(element, query) {
+  const text = element.textContent;
+  if (!query) {
+    element.innerHTML = text;
+    return;
+  }
+  const regex = new RegExp(`(${query})`, 'gi');
+  element.innerHTML = text.replace(regex, '<mark>$1</mark>');
+}
 
-    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+function renderStories() {
+  const query = searchInput.value.toLowerCase();
+  const selectedCategory = categoryFilter.value;
+  
+  const filteredStories = Array.from(stories).filter(story => {
+    // Search filter
+    const title = story.querySelector('.story-title').textContent.toLowerCase();
+    const snippet = story.querySelector('.story-snippet').textContent.toLowerCase();
+    const meta = story.querySelector('.story-meta').textContent.toLowerCase();
+    const matchesSearch = title.includes(query) || snippet.includes(query) || meta.includes(query);
+    
+    // Category filter
+    const storyCategory = story.getAttribute('data-category');
+    const matchesCategory = !selectedCategory || storyCategory === selectedCategory;
+    
+    return matchesSearch && matchesCategory;
   });
 
-  document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+  const start = (currentPage - 1) * storiesPerPage;
+  const end = start + storiesPerPage;
+
+  // Hide all stories first
+  stories.forEach(story => story.style.display = 'none');
+  
+  // Show filtered stories for current page
+  filteredStories.slice(start, end).forEach(story => {
+    story.style.display = '';
+    highlightText(story.querySelector('.story-title'), query);
+    highlightText(story.querySelector('.story-snippet'), query);
+  });
+
+  noResults.style.display = filteredStories.length === 0 ? 'block' : 'none';
+  renderPagination(filteredStories.length);
+}
+
+function renderPagination(totalItems) {
+  const totalPages = Math.ceil(totalItems / storiesPerPage);
+  pagination.innerHTML = '';
+  if (totalPages <= 1) return;
+  
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    btn.className = i === currentPage ? 'active' : '';
+    btn.addEventListener('click', () => { 
+      currentPage = i; 
+      renderStories(); 
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    pagination.appendChild(btn);
+  }
+}
+
+function sortStories() {
+  const sortType = sortSelect.value;
+  const container = document.querySelector('.story-grid');
+  const sortedStories = Array.from(stories);
+  
+  sortedStories.sort((a, b) => {
+    const dateA = new Date(a.querySelector('.story-meta').textContent.split('•')[1].trim());
+    const dateB = new Date(b.querySelector('.story-meta').textContent.split('•')[1].trim());
+    const titleA = a.querySelector('.story-title').textContent.toLowerCase();
+    const titleB = b.querySelector('.story-title').textContent.toLowerCase();
+    
+    if (sortType === 'newest') return dateB - dateA;
+    if (sortType === 'oldest') return dateA - dateB;
+    if (sortType === 'az') return titleA.localeCompare(titleB);
+  });
+  
+  // Re-append sorted stories to container
+  sortedStories.forEach(story => container.appendChild(story));
+  currentPage = 1;
+  renderStories();
+}
+
+// Event listeners
+searchInput.addEventListener('input', () => { 
+  currentPage = 1; 
+  renderStories(); 
+});
+
+categoryFilter.addEventListener('change', () => { 
+  currentPage = 1; 
+  renderStories(); 
+});
+
+sortSelect.addEventListener('change', sortStories);
+
+// Initial render
+renderStories();
+
+// Prevent right-click and view source
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => { 
+  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault(); 
 });
 </script>
 </body>

@@ -373,9 +373,9 @@
 
     <li class="tip-item"><span class="tip-icon">📝</span><strong>Structure Your Story:</strong> Use headings, short paragraphs, or bullet points to break your text into easy-to-read sections.</li>
 
-    <li class="tip-item"><span class="tip-icon">🎨</span><strong>Show, Don’t Just Tell:</strong> Use vivid details and examples to bring your story to life. Let readers feel what you felt.</li>
+    <li class="tip-item"><span class="tip-icon">🎨</span><strong>Show, Don't Just Tell:</strong> Use vivid details and examples to bring your story to life. Let readers feel what you felt.</li>
 
-    <li class="tip-item"><span class="tip-icon">💖</span><strong>Be Yourself:</strong> Write like you’re chatting with a friend. Honest, simple language connects best — your unique voice is your strength.</li>
+    <li class="tip-item"><span class="tip-icon">💖</span><strong>Be Yourself:</strong> Write like you're chatting with a friend. Honest, simple language connects best — your unique voice is your strength.</li>
 
     <li class="tip-item"><span class="tip-icon">🔍</span><strong>Edit and Proofread:</strong> Read your story aloud before sharing. Fix confusing parts and typos. A little polish makes a big difference.</li>
 
@@ -383,14 +383,27 @@
   </ul>
 </div>
 
-
-
     <form action="https://formsubmit.co/mohguemri17@gmail.com" method="POST">
       <label for="name">Name or Pen Name <span class="required">*</span></label>
       <input type="text" id="name" name="name" placeholder="Your name or nickname" required />
 
       <label for="email">Email <span class="required">*</span></label>
       <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+      <label for="category">Story Category <span class="required">*</span></label>
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Select category</option>
+        <option value="Personal">Personal</option>
+        <option value="Culture">Culture</option>
+        <option value="Politics">Politics</option>
+        <option value="Religion">Religion</option>
+        <option value="Work">Work</option>
+        <option value="Travel">Travel</option>
+        <option value="Education">Education</option>
+        <option value="Health">Health</option>
+        <option value="Society">Society</option>
+        <option value="Other">Other</option>
+      </select>
 
       <label for="language">Language of your story <span class="required">*</span></label>
       <select id="language" name="language" required>
@@ -432,11 +445,12 @@
         <img src="https://hitwebcounter.com/counter/counter.php?page=21359021&style=0006&nbdigits=6&type=ip&initCount=0" 
              alt="Visitor Counter" 
              style="vertical-align:middle; margin:0 5px;"/>
-        Unposters already found this page.
+        Unposters already found us.
     </p>
     &copy; 2025 Unposted — Because some words are too good to stay hidden.
         <!-- hitwebcounter Code START -->
   </footer>
+
 <!-- Newsletter Subscription Modal -->
 <div id="subscribe-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="display:none;">
   <div class="modal-content" role="document">
@@ -459,6 +473,7 @@
     </form>
   </div>
 </div>
+
 <script>
   const modal = document.getElementById('subscribe-modal');
   const btnNavbar = document.getElementById('subscribe-btn-navbar');
@@ -479,8 +494,6 @@
     openModal();
   });
 
- 
-
   closeBtn.addEventListener('click', () => {
     closeModal();
   });
@@ -498,12 +511,11 @@
       closeModal();
     }
   });
+  
   document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
-});
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+  });
 </script>
 </body>
 </html>
-
-
